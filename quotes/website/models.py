@@ -2,14 +2,14 @@ from django.db import models
 
 
 class Tag(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=30, unique=True)
 
     def __str__(self):
         return f"{self.name}"
 
 
 class Author(models.Model):
-    fullname = models.CharField(max_length=50)
+    fullname = models.CharField(max_length=50, unique=True)
     born_date = models.CharField(max_length=50)
     born_location = models.CharField(max_length=50)
     description = models.CharField(max_length=3000)

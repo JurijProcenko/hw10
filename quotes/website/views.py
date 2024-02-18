@@ -201,23 +201,24 @@ def authors(request):
 def quotes(request):
     tags = Tag.objects.all()
     authors = Author.objects.all()
+    quote_id = Quotes.objects.all().count()
 
     if request.method == "POST":
-        form = QuoteForm(request.POST)
-        if form.is_valid():
-            form.save()
+        form = Quotes(quote_id + 1, request.POST["author"], request.POST["quote"])
+        # if form.is_valid():
+        form.save()
 
-            choice_tags = Tag.objects.filter(name__in=request.POST.getlist("tags"))
-            for tag in choice_tags.iterator():
-                form.tags.add(tag)
+        choice_tags = Tag.objects.filter(name__in=request.POST.getlist("tags"))
+        for tag in choice_tags.iterator():
+            form.tags.add(tag)
 
-            return redirect(to="website:index")
-        else:
-            return render(
-                request,
-                "website/quotes.html",
-                {"tags": tags, "form": QuoteForm()},
-            )
+        return redirect(to="website:index")
+    # else:
+    # return render(
+    #     request,
+    #     "website/quotes.html",
+    #     {"tags": tags, "form": QuoteForm()},
+    # )
 
     return render(
         request,
