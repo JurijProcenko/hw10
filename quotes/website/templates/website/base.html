@@ -18,17 +18,15 @@
             <div class="col-md-4">
                 <p>
                     {% if user.is_authenticated %}
-                    <div>
-                        <a href="{% url 'website:authors' %}" class="btn btn-primary">Add a new Author</a>
-                        <a href="{% url 'website:quotes' %}" class="btn btn-primary">Add a new Quote</a>
-                    </div>
-                    <div>
-                        <a href="{% url 'website:tags' %}" class="btn btn-primary">Add a new Tag</a>
-                        <a href="{% url 'users:logout' %}" class="btn btn-primary">Logout</a>
-                    </div>
+                        <button class="btn btn-sm btn-primary w-100 ml-2" onclick="location.href='{% url 'website:bigbutton' %}'">Big Secret Button</button>
+                        <button class="btn btn-sm btn-primary w-100 ml-2" onclick="location.href='{% url 'website:authors' %}'">Add a new Author</button>
+                        <button class="btn btn-sm btn-primary w-100 ml-2" onclick="location.href='{% url 'website:quotes' %}'">Add a new Quote</button>
+                        <button class="btn btn-sm btn-primary w-100 ml-2" onclick="location.href='{% url 'website:tags' %}'">Add a new Tag</button>
+                        <button class="btn btn-sm btn-primary w-100 ml-2" onclick="location.href='{% url 'logout' %}'">Logout</button>
                     {% else %}
-                    <a href="{% url 'users:register' %}" class="btn btn-primary">Signup</a>
-                    <a href="{% url 'users:login' %}" class="btn btn-primary">Login</a>
+                    <button class="btn btn-sm btn-primary w-100 ml-2" onclick="location.href='{% url 'register_user' %}'">Register</button>
+                    <button class="btn btn-sm btn-primary w-100 ml-2" onclick="location.href='{% url 'login' %}'">Login</button>
+
                     {% endif %}
                 </p>
             </div>

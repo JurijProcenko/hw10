@@ -4,11 +4,19 @@ from django.http.response import HttpResponse as HttpResponse
 from django.shortcuts import redirect, render
 from django.views import View
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 
 
 # from django.contrib.auth.decorators import login_required
 
 from .forms import RegisterForm
+
+
+def login_user(request):
+    return render(
+        request,
+        "users/login.html",
+    )
 
 
 class RegisterView(View):
