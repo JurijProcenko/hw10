@@ -51,6 +51,87 @@ body {
     font-size: small;
     background-color: #7CA3E6;
   }
+
+  .tag10 {
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: white;
+    font-size: 38px;
+    background-color: #7CA3E6;
+  }
+
+  .tag9 {
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: white;
+    font-size: 34px;
+    background-color: #7CA3E6;
+  }
+
+  .tag8 {
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: white;
+    font-size: 30px;
+    background-color: #7CA3E6;
+  }
+
+  .tag7 {
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: white;
+    font-size: 28px;
+    background-color: #7CA3E6;
+  }
+
+  .tag6 {
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: white;
+    font-size: 26px;
+    background-color: #7CA3E6;
+  }
+
+  .tag5 {
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: white;
+    font-size: 24px;
+    background-color: #7CA3E6;
+  }
+
+  .tag4 {
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: white;
+    font-size: 22px;
+    background-color: #7CA3E6;
+  }
+
+  .tag3 {
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: white;
+    font-size: 20px;
+    background-color: #7CA3E6;
+  }
+
+  .tag2 {
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    background-color: #7CA3E6;
+  }
+
+  .tag1 {
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    background-color: #7CA3E6;
+  }
+
   
   a.tag:hover {
     text-decoration: none;

@@ -44,7 +44,7 @@
         <h2>Top Ten tags</h2>
         {% for tag_name in ten_popular_tags %}
         <span class="tag-item">
-            <a class="tag" style="font-size: 28px" href="/tag/{{tag_name}}/">{{tag_name}}</a>
+            <a class="{% cycle 'tag10' 'tag9' 'tag8' 'tag7' 'tag6' 'tag5' 'tag4' 'tag3' 'tag2' 'tag1'%}" href="/tag/{{tag_name}}">{{tag_name}}</a>
         </span>
 
         {% endfor %}

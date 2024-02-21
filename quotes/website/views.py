@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Author, Quotes, Tag
@@ -140,8 +141,8 @@ def ten_popular_tags():
     dict_tags = {}
     tags = Tag.objects.all()
     for tag in tags:
-        quantity = Tag.objects.filter(id=tag.id)
-        dict_tags[tag.name] = len(quantity)
+        quantity = Tag.objects.get(id=tag.id).quotes_set.all().count()
+        dict_tags[tag.name] = quantity
     sorted_tuple_tags = sorted(dict_tags.items(), key=lambda x: x[1], reverse=True)[:10]
     top_tags = []
     for tag in sorted_tuple_tags:
@@ -150,11 +151,15 @@ def ten_popular_tags():
 
 
 def index(request, page=1):
-    latest_quotes_list = Quotes.objects.all()
+    quotes_list = Quotes.objects.all()
     ten_tags = ten_popular_tags()
     shift = 10
-    paginator = Paginator(list(latest_quotes_list), shift)
+
+    paginator = Paginator(list(quotes_list), shift)
+    if page > paginator.num_pages:
+        return render(request, "website/404.html")
     quotes_on_page = paginator.page(page)
+
     return render(
         request,
         "website/index.html",
@@ -169,11 +174,14 @@ def author(request, author_id):
 
 def tag(request, tag_name):
     # It's need to push also Quotes with tag_id !
-    tag = Tag.objects.get(name=tag_name)
-    quotes = Quotes.objects.filter(tags)
-    return render(request, "website/tag.html", context={"tag": tag, "quotes": quotes})
+    # tag = Tag.objects.get(name=tag_name)
+    quotes = Tag.objects.get(name=tag_name).quotes_set.all()
+    return render(
+        request, "website/tag.html", context={"tag": tag_name, "quotes": quotes}
+    )
 
 
+@login_required
 def tags(request):
     if request.method == "POST":
         form = TagForm(request.POST)
@@ -186,6 +194,7 @@ def tags(request):
     return render(request, "website/tags.html", {"form": TagForm()})
 
 
+@login_required
 def authors(request):
     if request.method == "POST":
         form = AuthorForm(request.POST)
@@ -198,6 +207,7 @@ def authors(request):
     return render(request, "website/authors.html", {"form": AuthorForm()})
 
 
+@login_required
 def quotes(request):
     tags = Tag.objects.all()
     authors = Author.objects.all()

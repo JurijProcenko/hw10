@@ -5,6 +5,7 @@ app_name = "website"
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("<int:page>", views.index, name="root_paginate"),
     path("bigbutton", views.bigbutton, name="bigbutton"),
     path("bigbutton_ok", views.bigbutton_ok, name="bigbutton_ok"),
     path("tags/", views.tags, name="tags"),
